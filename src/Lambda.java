@@ -10,6 +10,7 @@ public class Lambda {
 				System.out.println("Local Class1!!");
 			}
 		}
+		//ローカルクラス
 		class Local2 implements Runnable{
 			public void run() {
 				System.out.println("Local Class2!!");
@@ -30,6 +31,26 @@ public class Lambda {
 		};
 		runner2.run();
 
+		//ラムダ式
+		//インスタンスとメソッドの宣言を省く
+		Runnable runner3 = () -> System.out.println("Lambda Class!!");
+		runner3.run();
+
+		//クラスの生成
+		class Local3 implements Test{
+			public void writeString(String str) {
+				System.out.println(str);
+			}
+		}
+		Test l1 = (String str) -> System.out.println(str);
+
+		Test local2 = new Local3();
+		local2.writeString("OK!!");
+		l1.writeString("Lambda OK!!");
+
+	}
+	interface Test{
+		void writeString(String str);
 	}
 
 }
